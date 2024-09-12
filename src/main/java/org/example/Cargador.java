@@ -55,9 +55,21 @@ public class Cargador extends DispositivoElectronico {
 
     public void cargar() throws InterruptedException {
 
-        int porcentajeActual = celular.getBateriaInterna().getPorcentajeDeCargaActual();
-        sleep(1000);
-        celular.getBateriaInterna().setPorcentajeDeCargaActual(porcentajeActual + 1);
+        // break   continue
+        for (int y = celular.getBateriaInterna().getPorcentajeDeCargaActual(); y <= celular.getBateriaInterna().getCapacidad(); y++) {
+            sleep(50);
+            System.out.println("Carga actual: " + celular.getBateriaInterna().getPorcentajeDeCargaActual() + " %");
+            celular.getBateriaInterna().setPorcentajeDeCargaActual(y + 1);
+        }
+
+        // Se animan a modelar una barra de carga que tenga la misma cantidad de simbolos que porcentaje cargado?
+        // seria algo asi
+        System.out.print("Cargando su dispositivo ");
+        for (int y = 1; y <= 100; y++) {
+            sleep(500);
+            System.out.print("*");
+        }
+
     }
 
 }

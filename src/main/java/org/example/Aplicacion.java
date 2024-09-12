@@ -1,9 +1,18 @@
 package org.example;
 
+import sms.Sms;
+
+import java.util.Scanner;
+
 public class Aplicacion {
+
+    static String nombreDeLaAplicacion = "Software de carga";
+
     public static void main(String[] args) {
 
-        Bateria bateriaLitio = new Bateria(5, 1, 100, 'B', 100, "Samsung bat", "BT01", 1);
+        System.out.println(nombreDeLaAplicacion);
+
+        Bateria bateriaLitio = new Bateria(5, 1, 100, 'B', 82, "Samsung bat", "BT01", 12);
         Celular samsungS12 = new Celular(bateriaLitio, "usbC", "Samsung", "S12", 123);
         Cargador cargador = new Cargador(5, 1, "usbC", "Keiko", "M49");
 
@@ -23,7 +32,58 @@ public class Aplicacion {
         System.out.println(samsungS12.numeroDeSerie);*/
 
         cargador.conectarAlCelular(samsungS12);
-        cargador.cargar();
 
+        try {
+            //cargador.cargar();
+        } catch (Exception e) {
+
+        }
+
+        Bateria bateria1 = ingresarPorConsolaValoresParaInstanciarUnaBateria();
+
+        System.out.println(bateria1.toString());
+
+        // ejemplo de static context
+        //Aplicacion.ingresarPorConsola();
+
+        // ejemplo de modificadores de visibilidad
+        //Sms sms = new Sms();
+        //DispositivoElectronico dispositivoElectronico = new DispositivoElectronico();
+
+    }
+
+    public static Bateria ingresarPorConsolaValoresParaInstanciarUnaBateria() {
+        int voltajeDeCarga, amperaje, cantidadDeCeldas, capacidad, porcentajeDeCargaActual;
+        char tipoDeCelda;
+        String marca, modelo;
+
+        // Scanner
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingrese voltaje de carga (5v, 10v, 15v): ");
+        voltajeDeCarga = scanner.nextInt();
+
+        System.out.print("Ingrese amperaje (1, 2 y 5 amperes): ");
+        amperaje = scanner.nextInt();
+
+        System.out.print("Ingrese cantidad de celdas: ");
+        cantidadDeCeldas = scanner.nextInt();
+
+        System.out.print("Ingrese capacidad en porcentaje: ");
+        capacidad = scanner.nextInt();
+
+        System.out.print("Ingrese porcentaje de carga actual: ");
+        porcentajeDeCargaActual = scanner.nextInt();
+
+        System.out.print("Ingrese tipo de celda (A, B, C): ");
+        tipoDeCelda = scanner.next().charAt(0);
+
+        System.out.print("Ingrese marca: ");
+        marca = scanner.next();
+
+        System.out.print("Ingrese modelo: ");
+        modelo = scanner.next();
+
+        return new Bateria(voltajeDeCarga, amperaje, cantidadDeCeldas, tipoDeCelda, capacidad, marca, modelo, porcentajeDeCargaActual);
     }
 }

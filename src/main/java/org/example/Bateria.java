@@ -2,11 +2,16 @@ package org.example;
 
 public class Bateria extends DispositivoElectronico {
 
-    public int voltajeDeCarga; // (5v, 10v, 15v)
-    public int amperaje; // (1, 2 y 5 amperes)
-    public int cantidadDeCeldas;
-    public char tipoDeCelda;
-    public int capacidad; //(10, 20, 50, 70 %)
+    private int voltajeDeCarga; // (5v, 10v, 15v)
+    private int amperaje; // (1, 2 y 5 amperes)
+    private int cantidadDeCeldas;
+    private char tipoDeCelda;
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    private int capacidad; //(10, 20, 50, 70 %)
 
     private int porcentajeDeCargaActual;
 
@@ -28,5 +33,20 @@ public class Bateria extends DispositivoElectronico {
 
     public void setPorcentajeDeCargaActual(int porcentajeDeCargaActual) {
         this.porcentajeDeCargaActual = porcentajeDeCargaActual;
+    }
+
+    @Override
+    public String toString() {
+        return "Bateria{" +
+                "voltajeDeCarga=" + voltajeDeCarga +
+                ", amperaje=" + amperaje +
+                ", cantidadDeCeldas=" + cantidadDeCeldas +
+                ", tipoDeCelda=" + tipoDeCelda +
+                ", capacidad=" + capacidad +
+                ", porcentajeDeCargaActual=" + porcentajeDeCargaActual +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", numeroDeSerie=" + numeroDeSerie +
+                '}';
     }
 }
