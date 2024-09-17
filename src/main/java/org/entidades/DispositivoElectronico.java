@@ -1,4 +1,4 @@
-package org.example;
+package org.entidades;
 
 public class DispositivoElectronico {
     protected String marca;

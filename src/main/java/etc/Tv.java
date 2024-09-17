@@ -1,6 +1,6 @@
-package tdd;
+package etc;
 
-import org.example.DispositivoElectronico;
+import org.entidades.DispositivoElectronico;
 
 public class Tv extends DispositivoElectronico {
     public void printMarca() {

@@ -1,7 +1,6 @@
-package tdd;
+package etc;
 
-import org.example.Bateria;
-import org.example.DispositivoElectronico;
+import org.entidades.Bateria;
 
 public class Test {
     public void test() {

@@ -1,4 +1,4 @@
-package sms;
+package org.externas;
 
 public class Sms {
 }

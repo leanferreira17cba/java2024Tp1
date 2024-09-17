@@ -1,4 +1,4 @@
-package org.example;
+package org.entidades;
 
 import static java.lang.Thread.sleep;
 
