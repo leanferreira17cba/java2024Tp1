@@ -36,6 +36,20 @@ public class Cargador extends DispositivoElectronico {
         // return conectado = true;
     }
 
+    @Override
+    public String toString() {
+        return "Cargador{" +
+                "voltajeDeCarga=" + voltajeDeCarga +
+                ", amperaje=" + amperaje +
+                ", tipoDeFicha='" + tipoDeFicha + '\'' +
+                ", conectado=" + conectado +
+                ", celular=" + celular +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", numeroDeSerie=" + numeroDeSerie +
+                '}';
+    }
+
     public boolean estaConectado() {
         return conectado;
     }

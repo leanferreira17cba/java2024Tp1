@@ -9,6 +9,18 @@ public class DispositivoElectronico {
        this.numeroDeSerie = numeroDeSerie;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public int getNumeroDeSerie() {
+        return numeroDeSerie;
+    }
+
     public DispositivoElectronico(String modelo) {
         this.modelo = modelo;
     }

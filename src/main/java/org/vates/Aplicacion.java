@@ -1,8 +1,10 @@
 package org.vates;
 
+import bd.BaseDeDatos;
 import org.entidades.Bateria;
 import org.entidades.Cargador;
 import org.entidades.Celular;
+import org.entidades.DispositivoElectronico;
 
 import java.util.Scanner;
 
@@ -14,16 +16,33 @@ public class Aplicacion {
 
         System.out.println(nombreDeLaAplicacion);
 
-        Bateria bateria = ingresarPorConsolaValoresParaInstanciarUnaBateria();
-        Celular celular = ingresarPorConsolaValoresParaInstanciarUnCelular();
-        Cargador cargador = ingresarPorConsolaValoresParaInstanciarUnCargador();
+        BaseDeDatos baseDeDatos = new BaseDeDatos();
 
-        //TODO: crear una base de datos para estos artefactos. De manera que haya una persistencia. List, Arrays, Maps.
+        for (int y = 0; y < 100; y++) {
+            Bateria bateria = new Bateria(5, 2, 34, 'A', 45, "Sam", "GT5", 3);//ingresarPorConsolaValoresParaInstanciarUnaBateria();
+            Celular celular = new Celular(bateria, "usbC", "Kim", "ER4", 3453453);//ingresarPorConsolaValoresParaInstanciarUnCelular(bateria);
+            Cargador cargador = new Cargador(5, 2, "usbC", "KIL", "AA"); //ingresarPorConsolaValoresParaInstanciarUnCargador();
 
+            baseDeDatos.setDispositivoElectronico(bateria);
+            baseDeDatos.setDispositivoElectronico(celular);
+            baseDeDatos.setDispositivoElectronico(cargador);
+        }
 
-        /*TODO Revisar si los datos ingresados son correctos y lanzar exception
-          TODO Revisar si los datos son correctos y continuar ejecucion informando al usuario pero sin detener el flujo de la app
-        */
+            int posicion = 0;
+
+            for (DispositivoElectronico dispositivo : baseDeDatos.getInstancia()) {
+                System.out.print("Elemento en posicion " + ++posicion + " - ");
+                System.out.println(dispositivo.toString());
+            }
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.print("Elija la posicion del elemento que quiere recuperar: ");
+            int posicionElegida = scanner.nextInt();
+            System.out.println("Dispositivo en la posicion " + posicionElegida + " : " + baseDeDatos.getDispositivoElectronico(posicionElegida - 1));
+            System.out.println("Cantidad de elementos de la instancia: " + baseDeDatos.getTamanoDeInstancia());
+            baseDeDatos.eliminarElemento(posicion);
+
     }
 
     public static Bateria ingresarPorConsolaValoresParaInstanciarUnaBateria() {
@@ -40,7 +59,7 @@ public class Aplicacion {
 
         boolean flag = true;
 
-        try {
+        /*try {
             int u = 7 / 1;
         } catch (ArithmeticException ae) {
             System.out.println("catchee");
@@ -49,13 +68,12 @@ public class Aplicacion {
 
         } finally {
             System.out.println("Ejecute el finally");
-        }
+        }*/
 
         while (flag) {
             valorDeVoltajeIngresadoPorConsola = scanner.nextInt();
 
             if (valorDeVoltajeIngresadoPorConsola == 5 || valorDeVoltajeIngresadoPorConsola == 10 || valorDeVoltajeIngresadoPorConsola == 15) {
-                // TODO: agregar los valores de 10 y 15
                 System.out.println("El valor ingresado es incorrecto. Debe ser: 5, 10 o 15. Se ingreso: " + valorDeVoltajeIngresadoPorConsola);
             } else {
                 flag = false;
@@ -88,12 +106,11 @@ public class Aplicacion {
         return new Bateria(voltajeDeCarga, amperaje, cantidadDeCeldas, tipoDeCelda, capacidad, marca, modelo, porcentajeDeCargaActual);
     }
 
-    public static Celular ingresarPorConsolaValoresParaInstanciarUnCelular() {
-        Bateria bateria = null;
+    public static Celular ingresarPorConsolaValoresParaInstanciarUnCelular(Bateria bateria) {
         int numeroDeSerie;
         String tipoDeFicha, marca, modelo;
 
-        System.out.println(Integer.MAX_VALUE);
+        //System.out.println(Integer.MAX_VALUE);
 
         // Scanner
         Scanner scanner = new Scanner(System.in);
