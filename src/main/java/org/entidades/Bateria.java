@@ -1,5 +1,7 @@
 package org.entidades;
 
+import ejemplointerface.ContratoSaludo;
+
 public class Bateria extends DispositivoElectronico {
 
     private int voltajeDeCarga; // (5v, 10v, 15v)
